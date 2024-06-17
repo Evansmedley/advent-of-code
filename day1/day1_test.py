@@ -31,5 +31,11 @@ class TestDay1(unittest.TestCase):
         self.assertEqual(self.calibration_value_finder.sum_calibration_values(test_case), 142)
     
 
+    def test_sum_txt_input(self):
+        with open('day1_input.txt', 'r') as file:
+            test_case = file.readlines()
+        
+        self.assertEqual(self.calibration_value_finder.sum_calibration_values(test_case), 54632)
+
 if __name__ == '__main__':
     unittest.main()

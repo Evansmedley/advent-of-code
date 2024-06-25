@@ -3,21 +3,21 @@ from enum import Enum
 
 class Cubes(Enum):
     RED = 12
-    BLUE = 14
     GREEN = 13
+    BLUE = 14
 
 
 class Handful():
     '''
     A handful consists of a number of red, blue and green cubes.
     '''
-    def __init__(self, red: int, blue: int, green: int) -> None:
+    def __init__(self, red: int, green: int, blue: int) -> None:
         self.red = red
-        self.blue = blue
         self.green = green
+        self.blue = blue
 
     def __repr__(self):
-        return f'red: {self.red}, blue: {self.blue}, green: {self.green}'
+        return f'red: {self.red}, green: {self.green}, blue: {self.blue}'
 
 
 class Game():
@@ -38,8 +38,8 @@ class CubeGame:
         '''
         Given a handful, is it possible with the given number of cubes?
         '''
-        return handful.red < Cubes.RED.value and handful.blue <= Cubes.BLUE.value \
-            and handful.green <= Cubes.GREEN.value
+        return handful.red <= Cubes.RED.value and handful.green <= Cubes.GREEN.value \
+            and handful.blue <= Cubes.BLUE.value
 
     def is_game_possible(self, game: Game) -> bool:
         '''

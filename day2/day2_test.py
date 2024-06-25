@@ -1,4 +1,6 @@
 import unittest
+import re
+
 from day2 import CubeGame, Handful, Game, Cubes
 
 class TestDay2(unittest.TestCase):
@@ -49,7 +51,40 @@ class TestDay2(unittest.TestCase):
 
 
     def test_with_txt_input(self):
-        # TODO
+        with open('day2_input.txt', 'r') as file:
+            games = file.readlines()
+        
+        # Define regexes
+        game_num_re = re.compile('Game ([0-9]+):')
+        red_re = re.compile('([0-9]+) r')
+        green_re = re.compile('([0-9]+) g')
+        blue_re = re.compile('([0-9]+) b')
+
+        # Parse
+        test_case = []
+        for game in games:
+            game_num = int(game_num_re.match(game).group(1))
+            handfuls = game.split(' ', 2)[2].split('; ')
+            
+            parsed_handfuls = []
+            for handful in handfuls:
+                red_match = red_re.search(handful)
+                red = int(red_match.group(1)) if red_match else 0
+
+                green_match = green_re.search(handful)
+                green = int(green_match.group(1)) if green_match else 0
+
+                blue_match = blue_re.search(handful)
+                blue = int(blue_match.group(1)) if blue_match else 0
+
+                parsed_handfuls.append(Handful(red, green, blue))
+
+            test_case.append(Game(game_num, parsed_handfuls))
+
+        self.assertEqual(self.cube_game.sum_of_possible_game_numbers(test_case), 2204)
+
+
+        
 
 if __name__ == '__main__':
     unittest.main()

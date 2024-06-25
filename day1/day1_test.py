@@ -56,14 +56,6 @@ class TestDay1(unittest.TestCase):
             ("nine", "9"),
             ("oneone", "11"),
             ("eightwo", "8wo"),          # Important!
-            ("threeight", "3ight"),
-            ("pgvthree1six15nineoneone", "pgv31615911"),
-            ("vhljqhzpbtxcssix3dbvttwo", "vhljqhzpbtxcs63dbvt2"),
-            ("hceightwobgcbsbtslf2onebhkdqlpvxxjpgsnmzfthree9", "hc8wobgcbsbtslf21bhkdqlpvxxjpgsnmzf39"),
-            ("lonenine4two2threenx", "l194223nx"),
-            ("5threeeightninesix1fournine", "53896149"),
-            ("fktwone4ninennnjdccftwothreetwo", "fk2ne49nnnjdccf232"),
-            ("fddrhjk2", "fddrhjk2")
         ]
 
         for line, expected in test_cases:

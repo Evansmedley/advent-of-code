@@ -7,7 +7,6 @@ class TestDay5(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def test_parse(self):
         with open("day5_input2.txt", 'r') as file:
             input = file.readlines()
@@ -29,6 +28,46 @@ class TestDay5(unittest.TestCase):
                          [Mapping(0, 69, 1), Mapping(1, 0, 69)])
         self.assertEqual(almanac.humidity_location_map,
                          [Mapping(60, 56, 37), Mapping(56, 93, 4)])
+
+
+    def test_map_to_locations(self):
+        # Given
+        with open("day5_input2.txt", 'r') as file:
+            input = file.readlines()
+        almanac = Almanac(input)
+        expected = [82, 43, 86, 35]
+
+        # When
+        locations = almanac.map_to_locations()
+
+        # Then
+        self.assertEqual(locations, expected)
+
+    
+    def test_lowest_location(self):
+        # Given
+        with open("day5_input2.txt", 'r') as file:
+            input = file.readlines()
+        almanac = Almanac(input)
+        
+        # When
+        location = almanac.lowest_location()
+
+        # Then
+        self.assertEqual(location, 35)
+
+
+    def test_lowest_location_from_full_input(self):
+        # Given
+        with open("day5_input.txt", 'r') as file:
+            input = file.readlines()
+        almanac = Almanac(input)
+        
+        # When
+        location = almanac.lowest_location()
+
+        # Then
+        self.assertEqual(location, 51580674)
 
 
 if __name__ == "__main__":
